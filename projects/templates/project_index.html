@@ -1,0 +1,30 @@
+{%extends 'base.html'%} {%load static%} {% block page_content%}
+
+<link
+  rel="stylesheet"
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"
+/>
+<link rel="stylesheet" href="{% static 'css/project/project.css' %}" />
+
+<div class="page-header"><h1>Projects</h1></div>
+
+<div class="row body">
+  {%for project in projects%}
+  <div class="col-md-4">
+    <img src="{%static project.image%}" alt="" class="card-img-top" />
+    <div class="card body">
+      <h5 class="card-title">{{project.title}}</h5>
+      <p class="card-text">{{project.description}}</p>
+      <a class="btn btn-primary" href="{% url 'project_detail' project.pk %}"
+        >Read more</a
+      >
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{%endblock%}
